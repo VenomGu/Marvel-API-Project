@@ -45,7 +45,15 @@ export const CardImage = styled.img`
 `;
 
 export const CardContent = styled.div`
-  padding: 10px;
+  .hide {
+  display: none;
+}
+
+.CardImage:hover + .hide {
+  display: block;
+  color: red;
+}
+  
 `;
 
 export const ButtonMore = styled.button`
@@ -60,7 +68,7 @@ export const ButtonMore = styled.button`
   padding: 10px;
   border-radius: 5px;
   &:hover {
-      background-color: rgba(226, 54, 54);
+      background-color: rgba(255, 255, 255, 0.2);
   }
 `;  
 
@@ -118,4 +126,61 @@ export const SearchButton = styled.button`
   }
 `;
 
+export const ModalOverlay = styled.div`
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, , 0, 0.7);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+`;
 
+export const ModalContent1 = styled.div`
+  background: rgba(255, 255, 0, 0.9);
+  padding: 20px;
+  max-width: 500px; /* Keeps the box from getting too wide */
+  width: auto; /* Allows the width to adjust based on content */
+  font-size: 20px;
+  margin: 25px;
+  border: solid black;
+  border-width: 3px 4px 3px 5px;
+  border-radius: 95% 4% 92% 5% / 4% 95% 6% 95%;
+  transform: rotate(2deg);
+  float: left;
+`;
+export const ModalContent2 = styled.div`
+  background: rgba(255, 0, 0, 0.9);
+  padding: 20px;
+  border-radius: 10px;
+  font-size: 20px;
+  margin:25px;
+  height:250px;
+  border: solid black;
+  border-color: black;
+  float:left;
+  width:auto;
+  max-width: 500px;
+  border-width: 3px 3px 5px 5px;
+  border-radius:4% 95% 6% 95%/95% 4% 92% 5%;
+  transform: rotate(-2deg);
+`;
+export const ModalContent3 = styled.div`
+  background: rgba(0, 0, 255, 0.9);
+  padding: 20px;
+  max-width: auto;
+  width: 90%;
+  font-size: 20px;
+  width:auto;
+  height:auto;
+  border: solid black;
+  border-color: black;
+  float:left;
+  border-width: 5px 3px 3px 5px;
+  border-radius:95% 4% 97% 5%/4% 94% 3% 95%;
+  transform: rotate(2deg);
+
+  
+`;

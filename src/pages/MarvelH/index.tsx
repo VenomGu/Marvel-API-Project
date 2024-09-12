@@ -27,7 +27,6 @@ const Header: React.FC<HeaderProps> = ({ onSearch }) => {
   return (
     <HeaderMarvel>
       <header>
-        <nav> </nav>
         <Title>
           <h1>Marvel</h1>
         </Title>
