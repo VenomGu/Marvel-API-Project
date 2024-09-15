@@ -5,8 +5,11 @@ import {
   Nav,
   SearchButton,
   SearchInput,
+  ButtonSearch,
+  HeaderWrapper,
+  LoginContainer,
 } from "../Characters/styles";
-
+import { FiLogIn } from "react-icons/fi";
 interface HeaderProps {
   onSearch: (query: string) => void;
 }
@@ -25,12 +28,36 @@ const Header: React.FC<HeaderProps> = ({ onSearch }) => {
   };
 
   return (
-    <HeaderMarvel>
-      <header>
-        <Title>
-          <h1>Marvel</h1>
-        </Title>
-        <Nav>
+    <>
+      <HeaderMarvel>
+        <header>
+          <Title>
+            <span onClick={handleSearch}>
+              <img src="marvel-logo.png" alt="marvel-logo"></img>
+            </span>
+          </Title>
+        </header>
+      </HeaderMarvel>
+      <HeaderWrapper>
+        <LoginContainer>
+          <nav>
+            <input
+              type="text"
+              placeholder="Email or username"
+              value={searchQuery}
+              onChange={handleInputChange}
+            />
+            <input
+              type="text"
+              placeholder="Password"
+              value={searchQuery}
+              onChange={handleInputChange}
+            />
+            <button onClick={handleSearch}>Login</button>
+          </nav>
+        </LoginContainer>
+
+        <ButtonSearch>
           <nav>
             <input
               type="text"
@@ -40,9 +67,9 @@ const Header: React.FC<HeaderProps> = ({ onSearch }) => {
             />
             <button onClick={handleSearch}>Search</button>
           </nav>
-        </Nav>
-      </header>
-    </HeaderMarvel>
+        </ButtonSearch>
+      </HeaderWrapper>
+    </>
   );
 };
 

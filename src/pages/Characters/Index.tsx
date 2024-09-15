@@ -5,8 +5,10 @@ import {
   Card,
   CardList,
   CardImage,
-  CardContent,
   ButtonMore,
+  BoxedName,
+  BoxOverCard,
+  BoxOfStars,
 } from "./styles";
 import Header from "../../pages/MarvelH/index";
 import { FiChevronDown } from "react-icons/fi";
@@ -33,6 +35,11 @@ const Characters: React.FC = () => {
   const [characters, setCharacters] = useState<FavoriteCharacter[]>([]);
   const [selectedCharacter, setSelectedCharacter] =
     useState<FavoriteCharacter | null>(null);
+  const [isFlipped, setIsFlipped] = useState(false);
+
+  const cardFlip = () => {
+    setIsFlipped(!isFlipped);
+  };
 
   // Load favorites from localStorage on component mount
   useEffect(() => {
@@ -223,6 +230,12 @@ const Characters: React.FC = () => {
     localStorage.setItem("favoriteCharacters", JSON.stringify(characters));
   }, [characters]);
 
+  const [isDescriptionVisible, setIsDescriptionVisible] = useState(false);
+
+  const toggleDescription = () => {
+    setIsDescriptionVisible(!isDescriptionVisible);
+  };
+
   return (
     <>
       <header>
@@ -231,40 +244,41 @@ const Characters: React.FC = () => {
       <Container>
         <CardList>
           {sortedCharacters.map((character) => (
-            <Card
-              key={character.id}
-              onClick={() => handleCardClick(character.id)}
-            >
-              <CardImage
-                src={`${character.thumbnail.path}.${character.thumbnail.extension}`}
-                alt={character.name}
-              />
-              <CardContent>
-                <h2>{`Name: ${character.name}`}</h2>
-                {character.description && (
-                  <p>{`Description: ${character.description}`}</p>
-                )}
-
-                {/* Favorite Button */}
-                <button onClick={() => toggleFavorite(character.id)}>
-                  {character.isFavorite ? "Unfavorite" : "Favorite"}
-                </button>
-
-                {/* Rank Selection */}
-                {[...Array(5)].map((_, index) => (
-                  <span
-                    key={index}
-                    style={{
-                      color: character.favoriteRank > index ? "gold" : "gray",
-                      cursor: "pointer",
-                    }}
-                    onClick={() => updateRank(character.id, index + 1)}
-                  >
-                    ★
-                  </span>
-                ))}
-              </CardContent>
-            </Card>
+            <BoxOverCard>
+              <Card
+                key={character.id}
+                onClick={() => handleCardClick(character.id)}
+              >
+                <CardImage
+                  src={`${character.thumbnail.path}.${character.thumbnail.extension}`}
+                  alt={character.name}
+                />
+                <BoxedName>
+                  <h2>{`Name: ${character.name}`}</h2>
+                </BoxedName>
+              </Card>
+              <BoxOfStars>
+                <span>
+                  {/* Favorite Button */}
+                  <button onClick={() => toggleFavorite(character.id)}>
+                    {character.isFavorite ? "Unfavorite" : "Favorite"}
+                  </button>
+                  {/* Rank Selection */}
+                  {[...Array(5)].map((_, index) => (
+                    <span
+                      key={index}
+                      style={{
+                        color: character.favoriteRank > index ? "gold" : "gray",
+                        cursor: "pointer",
+                      }}
+                      onClick={() => updateRank(character.id, index + 1)}
+                    >
+                      ★
+                    </span>
+                  ))}
+                </span>
+              </BoxOfStars>
+            </BoxOverCard>
           ))}
         </CardList>
 

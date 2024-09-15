@@ -1,59 +1,94 @@
 import styled from "styled-components";
-
+import Characters from "./Index";
 
 export const Container = styled.main`
   display: flex;
   flex-wrap: wrap;
   width: 100%;
   height: 100%; 
-  background-color: #202020;
+  background-color: black;
 `;
 
 export const CardList = styled.div`
   display: flex;
   flex-wrap: wrap;
   width: 100%;
-  justify-content: space-around; /* Distribute cards evenly */
+  justify-content: space-around; 
 `;
-
-export const Card = styled.div`
+export const BoxedName = styled.div`
   display: flex;
-  flex-direction: column; /* Stack image and text vertically */
-  width: 300px; /* Adjust width as needed */
+  flex-direction: center;
+  font-style: italic;
+  text-align: center;
+  justify-content: center;
+  width: 200px;
   height: auto;
-  margin: 10px;
-  background-color: #fff;
-  border-radius: 10px;
+  line-height: 1.2em;
+  margin-top: 1.5em;
+  margin-left: 2.5em;
+  background-size: cover;
+  background-position: center;
   overflow: hidden;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
   transition: all 0.3s ease-in-out;
-  cursor: pointer;
   h2, p {
       padding: 10px;
       text-align: center;
   }
+  `;
+
+export const BoxOverCard = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 320px;
+  margin-top: 1.5em;
+  background-size: cover;
+  background-position: center;
+  background-image: radial-gradient(circle, #49a1aa 0%, #333750 100%);
+  box-shadow: 0 0 2px white;
+  transition: all 0.3s ease-in-out; 
+  cursor: pointer;
+  
   &:hover {
     transform: scale(1.05);
-    box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 0 20px #efc501;
+    border-radius: 2%;
+  }
+`;
+
+
+export const Card = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 300px; 
+  line-height: 1.2em;
+  margin: 1.5em;
+  background-size: cover;
+  background-position: center;
+  box-shadow: 0 0 1px white;
+  transition: all 0.3s ease-in-out;
+  h2, p  {
+      padding: 10px;
+      text-align: center;
   }
 `;
 
 export const CardImage = styled.img`
-  width: 100%; 
-  height: 200px; 
-  object-fit: cover; 
-`;
-
-export const CardContent = styled.div`
-  .hide {
-  display: none;
-}
-
-.CardImage:hover + .hide {
-  display: block;
-  color: red;
-}
-  
+  display: flex;
+  flex-direction: column;
+  width: auto; 
+  height: 270px;
+  margin: 10px;
+  border-radius:3% 3% 3% 3%/3% 3% 3% 3%;
+  transition: all 0.3s ease-in-out;
+  h2, p {
+      padding: 10px;
+      text-align: center;
+  }
+      &:hover {
+        width: 280px;
+      }
 `;
 
 export const ButtonMore = styled.button`
@@ -71,58 +106,83 @@ export const ButtonMore = styled.button`
       background-color: rgba(255, 255, 255, 0.2);
   }
 `;  
+export const HeaderWrapper = styled.header`
+  display: flex; 
+  flex-direction: row;
+  justify-content: space-around; 
+  align-items: stretch; 
+  width: 100%; 
+  height: 20px; 
+  background-color: black;
+  padding: 0 20px; 
+  box-sizing: border-box;
+`;	
 
-/* Header Styles */
 export const HeaderMarvel = styled.header`
-  display: flex; /* Allow for side-by-side elements */
-  justify-content: space-around; /* Distribute elements evenly */
-  align-items: center; /* Vertically center content */
-  width: 100%; /* Fill entire width */
-  height: 80px; /* Adjust height as desired */
-  background-color: #202020;
-  padding: 0 20px; /* Add horizontal padding */
-  box-sizing: border-box; /* Include padding in width calculation */
+  display: flex; 
+  justify-content: center; 
+  align-items: left; 
+  background-color: black;
+  padding: 0 20px; 
+  box-sizing: border-box;
+
+  img {
+    width: 200px;
+    height: 100px;
+    margin-top: 5px;
+    margin-bottom: -10px;
+    
+  }
+`;
+export const ButtonSearch = styled.nav`
+  display: flex; 
+  align-items: center; 
+  justify-content: space-between; 
+` ;
+export const LoginContainer = styled.nav`
+  display: flex; 
+  align-items: flex-end; 
+  justify-content: space-between;
+`;
+export const BoxOfStars = styled.div`
+  display: flex;
+  align-items: left;
+  width: 300px;
+  margin-bottom: 3px;
 `;
 
-/* Title Styles */
-export const Title = styled.h1`
-  color: #fff; /* White text */
-  font-size: 2rem; /* Adjust font size */
-  font-weight: bold;
-  margin: 0; 
-  border-radius: 10px;
-  width: 160px;
-  height: 70px;
-  background-color: rgba(226, 54, 54)
+export const Title = styled.span`
+  display: flex; 
+  align-items: center;
+  
 `;
 
-/* Navigation Styles */
 export const Nav = styled.nav`
-  display: flex; /* Allow for side-by-side elements */
-  align-items: space-between; /* Vertically center content */
+  display: flex; 
+  align-items: space-between; 
 `;
 
 export const SearchInput = styled.input`
-  background-color: #f1f1f1; /* Light gray background */
-  border: none; /* Remove default border */
-  border-radius: 5px; /* Rounded corners */
-  padding: 5px 10px; /* Add padding */
-  font-size: 1rem; /* Adjust font size */
-  margin-right: 10px; /* Add spacing between search and button */
+  background-color: #f1f1f1; 
+  border: none; 
+  border-radius: 5px; 
+  padding: 5px 10px; 
+  font-size: 1rem; 
+  margin-right: 10px; 
 `;
 
 export const SearchButton = styled.button`
-  background-color: transparent; /* Transparent background */
-  border: 1px solid #fff; /* White border */
-  border-radius: 5px; /* Rounded corners */
-  padding: 5px 10px; /* Add padding */
-  font-size: 1rem; /* Adjust font size */
-  color: #fff; /* White text */
-  cursor: pointer; /* Indicate clickable element */
-  transition: all 0.2s ease; /* Add hover effect */
+  background-color: transparent; 
+  border: 1px solid #fff; 
+  border-radius: 5px;
+  padding: 5px 10px; 
+  font-size: 1rem; 
+  color: #fff; 
+  cursor: pointer; 
+  transition: all 0.2s ease; 
 
   &:hover {
-    background-color: rgba(255, 255, 255, 0.2); /* White background on hover */
+    background-color: rgba(255, 255, 255, 0.2); 
   }
 `;
 
@@ -132,55 +192,72 @@ export const ModalOverlay = styled.div`
   left: 0;
   right: 0;
   bottom: 0;
-  background: rgba(0, , 0, 0.7);
+  backdrop-filter: blur(5px);
+  background-color: rgba(0, 0, 0, 0.5);
   display: flex;
   align-items: center;
   justify-content: center;
 `;
 
-export const ModalContent1 = styled.div`
-  background: rgba(255, 255, 0, 0.9);
-  padding: 20px;
-  max-width: 500px; /* Keeps the box from getting too wide */
-  width: auto; /* Allows the width to adjust based on content */
+export const ModalContentContainer = styled.div`
+  display: flex;
+  flex-direction: row;
+  background-image: radial-gradient(circle, black 0%,  black 100%);
+  width: auto; 
+  max-height: 500px;
   font-size: 20px;
   margin: 25px;
-  border: solid black;
+  border: solid gold;
   border-width: 3px 4px 3px 5px;
-  border-radius: 95% 4% 92% 5% / 4% 95% 6% 95%;
-  transform: rotate(2deg);
+`;
+export const ModalContent1 = styled.div`
+  background-image: radial-gradient(circle, #fc1919 0%,  #960202 100%);
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+  max-width: 300px; 
+  max-height: 400px;
+  height: auto;
+  width: auto; 
+  font-size: 20px;
+  margin-top: 25px;
+  margin-left: 25px;
+  margin-bottom: 25px;
+  border: solid gold;
   float: left;
+    img {
+      width: 250px;
+      height: 250px;
+      margin-bottom: 10px;
+      opacity: 0.87; 
+        --mask-height: 25px; 
+        mask-image: linear-gradient(to top, transparent 0%, black var(--mask-height));
+        -webkit-mask-image: linear-gradient(to top, transparent 0%, black var(--mask-height)); 
+    }
 `;
 export const ModalContent2 = styled.div`
-  background: rgba(255, 0, 0, 0.9);
-  padding: 20px;
-  border-radius: 10px;
+  background-image: radial-gradient(circle, #fc1919 0%,  #960202 100%);
+  padding: 20px;  
   font-size: 20px;
   margin:25px;
-  height:250px;
-  border: solid black;
-  border-color: black;
+  height:auto;
+  border: solid gold;
   float:left;
   width:auto;
-  max-width: 500px;
-  border-width: 3px 3px 5px 5px;
-  border-radius:4% 95% 6% 95%/95% 4% 92% 5%;
-  transform: rotate(-2deg);
+  max-width: 300px;
 `;
 export const ModalContent3 = styled.div`
-  background: rgba(0, 0, 255, 0.9);
+  background-image: radial-gradient(circle, #fc1919 0%,  #960202 100%);
   padding: 20px;
   max-width: auto;
   width: 90%;
-  font-size: 20px;
+  font-size: 16px;
   width:auto;
   height:auto;
   border: solid black;
-  border-color: black;
+  border-color: gold;
   float:left;
-  border-width: 5px 3px 3px 5px;
-  border-radius:95% 4% 97% 5%/4% 94% 3% 95%;
-  transform: rotate(2deg);
-
-  
+  margin-right: 25px;
+  margin-bottom: 25px;
+  margin-top: 25px;
 `;
