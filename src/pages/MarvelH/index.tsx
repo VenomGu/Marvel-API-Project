@@ -10,6 +10,8 @@ import {
   LoginContainer,
 } from "../Characters/styles";
 import { FiLogIn } from "react-icons/fi";
+import { FaSearch } from "react-icons/fa";
+import LoginPage from "../Login";
 interface HeaderProps {
   onSearch: (query: string) => void;
 }
@@ -40,21 +42,7 @@ const Header: React.FC<HeaderProps> = ({ onSearch }) => {
       </HeaderMarvel>
       <HeaderWrapper>
         <LoginContainer>
-          <nav>
-            <input
-              type="text"
-              placeholder="Email or username"
-              value={searchQuery}
-              onChange={handleInputChange}
-            />
-            <input
-              type="text"
-              placeholder="Password"
-              value={searchQuery}
-              onChange={handleInputChange}
-            />
-            <button onClick={handleSearch}>Login</button>
-          </nav>
+          <LoginPage />
         </LoginContainer>
 
         <ButtonSearch>
@@ -65,7 +53,9 @@ const Header: React.FC<HeaderProps> = ({ onSearch }) => {
               value={searchQuery}
               onChange={handleInputChange}
             />
-            <button onClick={handleSearch}>Search</button>
+            <button onClick={handleSearch}>
+              <FaSearch size={14} />
+            </button>
           </nav>
         </ButtonSearch>
       </HeaderWrapper>

@@ -83,6 +83,9 @@ const Characters: React.FC = () => {
           isFavorite: false,
           favoriteRank: 0,
         }));
+        if (response.data.data.results.length === 0) {
+          alert("Character not found");
+        }
         setCharacters(data);
       } catch (error) {
         console.log("Character not found", error);
@@ -254,7 +257,7 @@ const Characters: React.FC = () => {
                   alt={character.name}
                 />
                 <BoxedName>
-                  <h2>{`Name: ${character.name}`}</h2>
+                  <h2>{character.name}</h2>
                 </BoxedName>
               </Card>
               <BoxOfStars>

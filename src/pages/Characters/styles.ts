@@ -103,13 +103,13 @@ export const ButtonMore = styled.button`
   padding: 10px;
   border-radius: 5px;
   &:hover {
-      background-color: rgba(255, 255, 255, 0.2);
+      background-color: lightgray;
   }
 `;  
 export const HeaderWrapper = styled.header`
   display: flex; 
   flex-direction: row;
-  justify-content: space-around; 
+  justify-content: space-between; 
   align-items: stretch; 
   width: 100%; 
   height: 20px; 
