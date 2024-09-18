@@ -8,6 +8,7 @@ import {
   ButtonSearch,
   HeaderWrapper,
   LoginContainer,
+  HomeButton,
 } from "../Characters/styles";
 import { FiLogIn } from "react-icons/fi";
 import { FaSearch } from "react-icons/fa";
@@ -28,13 +29,16 @@ const Header: React.FC<HeaderProps> = ({ onSearch }) => {
     onSearch(searchQuery);
     console.log("searchQuery 2", searchQuery);
   };
+  const homeButton = () => {
+    window.location.reload();
+  };
 
   return (
     <>
       <HeaderMarvel>
         <header>
           <Title>
-            <span onClick={handleSearch}>
+            <span onClick={homeButton}>
               <img src="marvel-logo.png" alt="marvel-logo"></img>
             </span>
           </Title>

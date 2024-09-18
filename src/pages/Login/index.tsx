@@ -1,5 +1,6 @@
 import { useState } from "react";
-
+import { HomeButton } from "../Characters/styles";
+import Header from "../MarvelH";
 const LoginPage = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -9,9 +10,17 @@ const LoginPage = () => {
     { email: string; password: string }[]
   >([]);
 
+  const logOut = () => {
+    setHelloUser(false);
+  };
+
   const welcomeUser = () => {
     if (helloUser === true) {
-      return <h1 style={{ color: "white" }}>Welcome {email}</h1>;
+      return (
+        <h1 style={{ color: "white" }}>
+          Welcome {email} <button onClick={logOut}> log out </button>
+        </h1>
+      );
     }
   };
 
@@ -43,13 +52,19 @@ const LoginPage = () => {
   return (
     <>
       <nav>
+        {" "}
+        <nav>
+          <HomeButton onClick={() => window.location.reload()}>
+            {" "}
+            Home{" "}
+          </HomeButton>
+        </nav>
         {helloUser === false && (
           <>
             <input
               id="email"
               placeholder="Email Address"
               name="email"
-              autoFocus
               value={email}
               onChange={(e) => setEmail(e.target.value)}
             />
@@ -86,7 +101,6 @@ const LoginPage = () => {
             )}
           </>
         )}
-
         {helloUser === true && welcomeUser()}
       </nav>
     </>

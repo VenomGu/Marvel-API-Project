@@ -154,6 +154,7 @@ export const BoxOfStars = styled.div`
 export const Title = styled.span`
   display: flex; 
   align-items: center;
+  cursor: pointer;
   
 `;
 
@@ -260,4 +261,20 @@ export const ModalContent3 = styled.div`
   margin-right: 25px;
   margin-bottom: 25px;
   margin-top: 25px;
+`;
+
+export const HomeButton = styled.button`
+  background-color: #F0131E; 
+  border: 1px solid #fff; 
+  border-radius: 5px;
+  padding: 5px 10px; 
+  font-size: 1rem; 
+  color: white; 
+  cursor: pointer; 
+  transition: all 0.2s ease; 
+  margin-bottom: 10px;
+
+  &:hover {
+    background-color: rgba(255, 255, 255, 0.2); 
+  }
 `;
