@@ -1,18 +1,14 @@
-import React, { useState } from "react";
+import React, { useState, KeyboardEvent } from "react";
 import {
   HeaderMarvel,
   Title,
-  Nav,
-  SearchButton,
-  SearchInput,
   ButtonSearch,
   HeaderWrapper,
   LoginContainer,
-  HomeButton,
 } from "../Characters/styles";
-import { FiLogIn } from "react-icons/fi";
 import { FaSearch } from "react-icons/fa";
 import LoginPage from "../Login";
+
 interface HeaderProps {
   onSearch: (query: string) => void;
 }
@@ -25,10 +21,17 @@ const Header: React.FC<HeaderProps> = ({ onSearch }) => {
     console.log("searchQuery 1", searchQuery);
   };
 
-  const handleSearch = () => {
+  const handleSearch = (e: any) => {
     onSearch(searchQuery);
     console.log("searchQuery 2", searchQuery);
   };
+  const handleSearchEnterPress = (e: React.KeyboardEvent<HTMLInputElement>) => {
+    if (e.key === "Enter") {
+      e.preventDefault();
+      onSearch(searchQuery);
+    }
+  };
+
   const homeButton = () => {
     window.location.reload();
   };
@@ -52,10 +55,12 @@ const Header: React.FC<HeaderProps> = ({ onSearch }) => {
         <ButtonSearch>
           <nav>
             <input
+              className="Search"
               type="text"
               placeholder="Search characters"
               value={searchQuery}
               onChange={handleInputChange}
+              onKeyDown={handleSearchEnterPress}
             />
             <button onClick={handleSearch}>
               <FaSearch size={14} />

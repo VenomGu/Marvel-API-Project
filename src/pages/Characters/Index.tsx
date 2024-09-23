@@ -28,42 +28,17 @@ interface ResponseData {
 
 interface FavoriteCharacter extends ResponseData {
   isFavorite: boolean;
-  favoriteRank: number; // Favorite ranking (0-5 stars)
+  favoriteRank: number;
 }
 
 const Characters: React.FC = () => {
   const [characters, setCharacters] = useState<FavoriteCharacter[]>([]);
   const [selectedCharacter, setSelectedCharacter] =
     useState<FavoriteCharacter | null>(null);
-  const [isFlipped, setIsFlipped] = useState(false);
-
-  const cardFlip = () => {
-    setIsFlipped(!isFlipped);
-  };
-
-  // Load favorites from localStorage on component mount
-  useEffect(() => {
-    const loadFavorites = () => {
-      const storedFavorites = localStorage.getItem("favoriteCharacters");
-      if (storedFavorites) {
-        const parsedFavorites: FavoriteCharacter[] =
-          JSON.parse(storedFavorites);
-        setCharacters((prev) =>
-          prev.map((character) => {
-            const favorite = parsedFavorites.find(
-              (fav) => fav.id === character.id
-            );
-            return favorite ? { ...character, ...favorite } : character;
-          })
-        );
-      }
-    };
-
-    loadFavorites();
-  }, []);
 
   // Save favorites to localStorage when they change
   useEffect(() => {
+    console.log("Favorite characters SAVED 1", characters);
     localStorage.setItem("favoriteCharacters", JSON.stringify(characters));
   }, [characters]);
 
@@ -180,7 +155,7 @@ const Characters: React.FC = () => {
 
   // Save favorites
   useEffect(() => {
-    console.log("Saving favorites:", characters); // Add this line to debug
+    console.log("Saving favorites: 2", characters);
     localStorage.setItem("favoriteCharacters", JSON.stringify(characters));
   }, [characters]);
 
@@ -188,7 +163,7 @@ const Characters: React.FC = () => {
   useEffect(() => {
     const loadFavorites = () => {
       const storedFavorites = localStorage.getItem("favoriteCharacters");
-      console.log("Loaded favorites:", storedFavorites); // Add this line to debug
+      console.log("Loaded favorites from localStorage:", storedFavorites);
       if (storedFavorites) {
         const parsedFavorites: FavoriteCharacter[] =
           JSON.parse(storedFavorites);
@@ -232,12 +207,6 @@ const Characters: React.FC = () => {
     console.log("Saving to localStorage:", characters);
     localStorage.setItem("favoriteCharacters", JSON.stringify(characters));
   }, [characters]);
-
-  const [isDescriptionVisible, setIsDescriptionVisible] = useState(false);
-
-  const toggleDescription = () => {
-    setIsDescriptionVisible(!isDescriptionVisible);
-  };
 
   return (
     <>

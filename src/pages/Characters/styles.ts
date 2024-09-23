@@ -7,6 +7,7 @@ export const Container = styled.main`
   width: 100%;
   height: 100%; 
   background-color: black;
+  justify-content: center;
 `;
 
 export const CardList = styled.div`
@@ -79,6 +80,7 @@ export const CardImage = styled.img`
   flex-direction: column;
   width: auto; 
   height: 270px;
+
   margin: 10px;
   border-radius:3% 3% 3% 3%/3% 3% 3% 3%;
   transition: all 0.3s ease-in-out;
@@ -94,16 +96,21 @@ export const CardImage = styled.img`
 export const ButtonMore = styled.button`
   background-color: #f1f1f1;
   height: 40px;
+  width: 400px;
   cursor: pointer;
+  font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
   display: flex;
   align-items: center;
-  justify-content: space-around;
+  justify-content: space-between;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
   margin: 10px;
   padding: 10px;
   border-radius: 5px;
   &:hover {
       background-color: lightgray;
+      background-image: radial-gradient(circle, #49a1aa 0%, #333750 100%);
+      box-shadow: 0 0 20px #efc501;
+      border-radius: 2%;
   }
 `;  
 export const HeaderWrapper = styled.header`
@@ -129,7 +136,7 @@ export const HeaderMarvel = styled.header`
   img {
     width: 200px;
     height: 100px;
-    margin-top: 5px;
+    margin-top: 0px;
     margin-bottom: -10px;
     
   }
@@ -155,6 +162,16 @@ export const Title = styled.span`
   display: flex; 
   align-items: center;
   cursor: pointer;
+  padding-top: 1px;
+  margin-top: 10px;
+  transition: all 0.2s ease; 
+  box-shadow: 1px 1px 2px white;
+  transition: all 0.3s ease-in-out; 
+
+  &:hover {
+    background-image: radial-gradient(circle, #49a1aa 0%, #333750 100%);
+    box-shadow: 0 0 20px #efc501;
+  }
   
 `;
 
@@ -203,14 +220,19 @@ export const ModalOverlay = styled.div`
 export const ModalContentContainer = styled.div`
   display: flex;
   flex-direction: row;
-  background-image: radial-gradient(circle, black 0%,  black 100%);
-  width: auto; 
+  background-image: radial-gradient(circle, black 0%, black 100%);
+  width: auto;
   max-height: 500px;
   font-size: 20px;
   margin: 25px;
   border: solid gold;
   border-width: 3px 4px 3px 5px;
+
+  @media (max-width: 845px) { // Adjust the breakpoint as needed
+    flex-direction: column;
+  }
 `;
+
 export const ModalContent1 = styled.div`
   background-image: radial-gradient(circle, #fc1919 0%,  #960202 100%);
   display: flex;
@@ -226,14 +248,29 @@ export const ModalContent1 = styled.div`
   margin-bottom: 25px;
   border: solid gold;
   float: left;
+    @media (max-width: 845px) { 
+        max-width:auto;
+        max-height:auto;
+        flex-direction: row;
+        margin: auto;
+        justify-content: left;
+        font-size:70%;
+        display: none;
+      }
     img {
-      width: 250px;
+      width: 350px;
       height: 250px;
-      margin-bottom: 10px;
+      max-width: 100%;
+      max-height: 100%;
+      margin-bottom:10px;
       opacity: 0.87; 
         --mask-height: 25px; 
         mask-image: linear-gradient(to top, transparent 0%, black var(--mask-height));
         -webkit-mask-image: linear-gradient(to top, transparent 0%, black var(--mask-height)); 
+        @media (max-width: 845px) { 
+          display: none;
+          font-size:70%
+      }
     }
 `;
 export const ModalContent2 = styled.div`
@@ -242,17 +279,33 @@ export const ModalContent2 = styled.div`
   font-size: 20px;
   margin:25px;
   height:auto;
+  max-height:400px;
   border: solid gold;
   float:left;
   width:auto;
   max-width: 300px;
+  @media (max-width: 845px) { 
+        max-width:auto;
+        max-height:auto;
+        flex-direction: row;
+        margin: 5px;
+        font-size: 70%;
+      }
+      @media (max-width: 400px) { 
+        max-width:auto;
+        max-height:auto;
+        flex-direction: row;
+        margin: 5px;
+        font-size: 50%;
+      }
 `;
 export const ModalContent3 = styled.div`
   background-image: radial-gradient(circle, #fc1919 0%,  #960202 100%);
   padding: 20px;
   max-width: auto;
+  max-height: fit-content;
   width: 90%;
-  font-size: 16px;
+  font-size: 14px;
   width:auto;
   height:auto;
   border: solid black;
@@ -261,6 +314,20 @@ export const ModalContent3 = styled.div`
   margin-right: 25px;
   margin-bottom: 25px;
   margin-top: 25px;
+  @media (max-width: 845px) { 
+        max-width:auto;
+        max-height:auto;
+        flex-direction: row;
+        margin: 5px;
+        font-size: 60%;
+      }
+      @media (max-width: 425px) { 
+        max-width:auto;
+        max-height:auto;
+        flex-direction: row;
+        margin: 5px;
+        font-size: 50%;
+      }
 `;
 
 export const HomeButton = styled.button`
@@ -273,8 +340,13 @@ export const HomeButton = styled.button`
   cursor: pointer; 
   transition: all 0.2s ease; 
   margin-bottom: 10px;
+  box-shadow: 0 0 2px white;
+  transition: all 0.3s ease-in-out; 
+  cursor: pointer;
 
   &:hover {
-    background-color: rgba(255, 255, 255, 0.2); 
+    background-image: radial-gradient(circle, #49a1aa 0%, #333750 100%);
+    box-shadow: 0 0 20px #efc501;
+    border-radius: 2%;
   }
 `;
