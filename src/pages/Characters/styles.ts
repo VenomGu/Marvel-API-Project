@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import Characters from "./Index";
+
 
 export const Container = styled.main`
   display: flex;
@@ -132,13 +132,24 @@ export const HeaderMarvel = styled.header`
   background-color: black;
   padding: 0 20px; 
   box-sizing: border-box;
+  padding-bottom: 35px;
+  margin-bottom: 35px;
 
   img {
     width: 200px;
     height: 100px;
     margin-top: 0px;
     margin-bottom: -10px;
-    
+    @media (max-width: 640px) {
+    width: 150px;
+    height: 75px;
+    margin-top: 0px;
+    margin-bottom: -10px;
+    }
+    @media (max-width: 425px) {
+      width: 50px;
+      height: 25px;
+    }
   }
 `;
 export const ButtonSearch = styled.nav`
@@ -187,6 +198,8 @@ export const SearchInput = styled.input`
   padding: 5px 10px; 
   font-size: 1rem; 
   margin-right: 10px; 
+  width: 300px;
+  height: 35px;
 `;
 
 export const SearchButton = styled.button`
@@ -197,7 +210,7 @@ export const SearchButton = styled.button`
   font-size: 1rem; 
   color: #fff; 
   cursor: pointer; 
-  transition: all 0.2s ease; 
+  transition: all 0.2s ease;
 
   &:hover {
     background-color: rgba(255, 255, 255, 0.2); 

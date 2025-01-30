@@ -1,4 +1,4 @@
-import React, { useState, KeyboardEvent } from "react";
+import React, { useState } from "react";
 import {
   HeaderMarvel,
   Title,
@@ -55,6 +55,7 @@ const Header: React.FC<HeaderProps> = ({ onSearch }) => {
         <ButtonSearch>
           <nav>
             <input
+              style={{ width: 300, height: 35, marginBottom: 5 }}
               className="Search"
               type="text"
               placeholder="Search characters"
@@ -62,7 +63,7 @@ const Header: React.FC<HeaderProps> = ({ onSearch }) => {
               onChange={handleInputChange}
               onKeyDown={handleSearchEnterPress}
             />
-            <button onClick={handleSearch}>
+            <button style={{ width: 30, height: 35 }} onClick={handleSearch}>
               <FaSearch size={14} />
             </button>
           </nav>

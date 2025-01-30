@@ -6,7 +6,6 @@ import {
   ModalContent3,
   ModalContentContainer,
 } from "../Characters/styles";
-import { FaSearch } from "react-icons/fa";
 
 interface CharacterDetailsModalProps {
   character: any;
