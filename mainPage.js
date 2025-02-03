@@ -1,10 +1,11 @@
 //MainPage.js
+import App from "./src/App";
 
 console.log("mainPage.js");
 alert("mainPage.js");
 
 const MainPage = () => {
-    return <h1 id="mainPage">mainPage.js </h1>
+    return App;
 };
 
 export default MainPage;
