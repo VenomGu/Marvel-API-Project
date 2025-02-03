@@ -1,5 +1,5 @@
 <!doctype html>
-    <html lang="en" style="background:#000">    
+    <html lang="en" >    
         <head>
             <meta charset="utf-8"/>
                 <link rel="icon" href="/Marvel-API-project/favicon.ico"/>
@@ -14,27 +14,23 @@
                     Marvel API
                 </title>
 
-            <script defer="defer" src="/Marvel-API-project/static/js/mainPage.js">
-                import App from "./App";
+            <script defer="defer" src="/my-react-project/mainPage.js">
+                //mainPage.js
+                import MainPage from "./mainPage";
 
-                const root = ReactDOM.createRoot(
-                    document.getElementById("root")
-                );
-                root.render(
-                    <React.StrictMode>
-                        <App />
-                    </React.StrictMode>
-                );
-
+                const MainPage = () => {
+                    return <h1 id="mainPage">mainPage.js</h1>
+                };
             </script>
         </head>
             <body>
                 <noscript>
+
                     You need to enable JavaScript to run this app. is it here, RIGHT?? 
                 </noscript>
                 <div id="root">
                     Lorem ipsum dolor, sit amet consectetur adipisicing elit. Excepturi fuga quas a atque blanditiis culpa, est non accusamus velit, ea veritatis expedita eaque nulla, aliquid consequuntur. Obcaecati ad laudantium sunt!
-                    
                 </div>
+
             </body>
     </html>
