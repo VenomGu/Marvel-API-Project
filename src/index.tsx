@@ -10,3 +10,5 @@ root.render(
     <App />
   </React.StrictMode>
 );
+//export to index.html
+export default App;
