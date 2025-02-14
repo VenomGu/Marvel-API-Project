@@ -40,11 +40,7 @@ const Header: React.FC<HeaderProps> = ({ onSearch }) => {
     <>
       <HeaderMarvel>
         <header>
-          <Title>
-            <span onClick={homeButton}>
-              <img src="../../assets/marvel-logo.png" alt="marvel-logo"></img>
-            </span>
-          </Title>
+          <Title></Title>
         </header>
       </HeaderMarvel>
       <HeaderWrapper>
