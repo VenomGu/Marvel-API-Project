@@ -36,7 +36,6 @@ const Characters: React.FC = () => {
   const [selectedCharacter, setSelectedCharacter] =
     useState<FavoriteCharacter | null>(null);
 
-  // Save favorites to localStorage when they change
   useEffect(() => {
     console.log("Favorite characters SAVED 1", characters);
     localStorage.setItem("favoriteCharacters", JSON.stringify(characters));
@@ -109,7 +108,6 @@ const Characters: React.FC = () => {
     }
   }, [characters]);
 
-  // Toggle favorite status and update ranking
   const toggleFavorite = (id: string) => {
     setCharacters((prev) =>
       prev.map((character) =>
@@ -120,7 +118,6 @@ const Characters: React.FC = () => {
     );
   };
 
-  // Update favorite rank
   const updateRank = (id: string, rank: number) => {
     setCharacters((prev) =>
       prev.map((character) =>
@@ -129,7 +126,6 @@ const Characters: React.FC = () => {
     );
   };
 
-  // Sort characters by favorite rank and favorites first
   const sortedCharacters = characters
     .slice()
     .sort(
@@ -153,13 +149,11 @@ const Characters: React.FC = () => {
       .catch((error) => console.log("Not Working: ", error));
   }, []);
 
-  // Save favorites
   useEffect(() => {
     console.log("Saving favorites: 2", characters);
     localStorage.setItem("favoriteCharacters", JSON.stringify(characters));
   }, [characters]);
 
-  // Load favorites
   useEffect(() => {
     const loadFavorites = () => {
       const storedFavorites = localStorage.getItem("favoriteCharacters");
@@ -180,7 +174,7 @@ const Characters: React.FC = () => {
 
     loadFavorites();
   }, []);
-  // Load favorites from localStorage on component mount
+
   useEffect(() => {
     const loadFavorites = () => {
       const storedFavorites = localStorage.getItem("favoriteCharacters");
@@ -202,7 +196,6 @@ const Characters: React.FC = () => {
     loadFavorites();
   }, []);
 
-  // Save favorites to localStorage when they change
   useEffect(() => {
     console.log("Saving to localStorage:", characters);
     localStorage.setItem("favoriteCharacters", JSON.stringify(characters));
@@ -231,11 +224,9 @@ const Characters: React.FC = () => {
               </Card>
               <BoxOfStars>
                 <span>
-                  {/* Favorite Button */}
                   <button onClick={() => toggleFavorite(character.id)}>
                     {character.isFavorite ? "Unfavorite" : "Favorite"}
                   </button>
-                  {/* Rank Selection */}
                   {[...Array(5)].map((_, index) => (
                     <span
                       key={index}
