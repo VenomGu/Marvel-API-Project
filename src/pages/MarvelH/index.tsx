@@ -57,7 +57,7 @@ const Header: React.FC<HeaderProps> = ({ onSearch }) => {
               style={{ width: 200, height: 35, marginBottom: 30 }}
               className="Search"
               type="text"
-              placeholder="Search characters by name"
+              placeholder="Search characters"
               value={searchQuery}
               onChange={handleInputChange}
               onKeyDown={handleSearchEnterPress}
