@@ -45,7 +45,7 @@ const Characters: React.FC = () => {
     async (query: string) => {
       try {
         const response = await api.get(
-          "http://gateway.marvel.com/v1/public/characters",
+          "https://gateway.marvel.com/v1/public/characters",
           {
             params: {
               nameStartsWith: query,
@@ -71,7 +71,7 @@ const Characters: React.FC = () => {
   const handleCardClick = async (characterId: string) => {
     try {
       const response = await api.get(
-        `http://gateway.marvel.com/v1/public/characters/${characterId}`
+        `https://gateway.marvel.com/v1/public/characters/${characterId}`
       );
       const character = response.data.data.results[0];
       setSelectedCharacter({
@@ -88,7 +88,7 @@ const Characters: React.FC = () => {
     try {
       const offset = characters.length;
       const response = await api.get(
-        "http://gateway.marvel.com/v1/public/characters",
+        "https://gateway.marvel.com/v1/public/characters",
         {
           params: {
             offset,
@@ -136,7 +136,7 @@ const Characters: React.FC = () => {
 
   useEffect(() => {
     api
-      .get(`http://gateway.marvel.com/v1/public/characters`)
+      .get(`https://gateway.marvel.com/v1/public/characters`)
       .then((response) => {
         setCharacters(
           response.data.data.results.map((char: ResponseData) => ({
