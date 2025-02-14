@@ -123,6 +123,12 @@ export const HeaderWrapper = styled.header`
   background-color: black;
   padding: 0 20px; 
   box-sizing: border-box;
+      @media(max-width: 640px) {
+        justify-content:stretch;
+      }
+      @media(max-width: 520px){
+        
+      }
 `;	
 
 export const HeaderMarvel = styled.header`
@@ -156,6 +162,10 @@ export const ButtonSearch = styled.nav`
   display: flex; 
   align-items: center; 
   justify-content: space-between; 
+  @media (max-width: 640px) {
+    margin-bottom: 50px;
+    padding-bottom: 5px;
+  }
 ` ;
 export const LoginContainer = styled.nav`
   display: flex; 
@@ -200,6 +210,12 @@ export const SearchInput = styled.input`
   margin-right: 10px; 
   width: 300px;
   height: 35px;
+    @media(max-width: 640px) {
+      width: 200px;
+    }
+    @media(max-width: 425px) {
+      width: 100px;
+    }
 `;
 
 export const SearchButton = styled.button`
@@ -211,9 +227,15 @@ export const SearchButton = styled.button`
   color: #fff; 
   cursor: pointer; 
   transition: all 0.2s ease;
+  width: 300px;
+  height: 35px;
+  margin-bottom: 5px;
 
   &:hover {
     background-color: rgba(255, 255, 255, 0.2); 
+    @media(max-width: 640px) {
+      width: 200px;
+    }
   }
 `;
 
