@@ -8,7 +8,6 @@ import {
 } from "../Characters/styles";
 import { FaSearch } from "react-icons/fa";
 import LoginPage from "../Login";
-
 interface HeaderProps {
   onSearch: (query: string) => void;
 }
@@ -42,7 +41,10 @@ const Header: React.FC<HeaderProps> = ({ onSearch }) => {
         <header>
           <Title>
             <span onClick={homeButton}>
-              <img src="marvel-logo.png" alt="marvel-logo"></img>
+              <img
+                src="https://github.com/VenomGu/my-react-project/blob/60346761ac7981485f6de6a18d44c5c9ccedbb4e/public/marvel-logo.png"
+                alt="marvel-logo"
+              ></img>
             </span>
           </Title>
         </header>
