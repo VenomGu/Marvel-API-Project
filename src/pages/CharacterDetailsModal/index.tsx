@@ -7,6 +7,16 @@ import {
   ModalContentContainer,
 } from "../Characters/styles";
 
+interface Comic {
+  name: string;
+  // Add other properties if needed
+}
+
+interface Creator {
+  name: string;
+  // Add other properties if needed
+}
+
 interface CharacterDetailsModalProps {
   character: any;
   onClose: () => void;
@@ -21,8 +31,12 @@ const CharacterDetailsModal: React.FC<CharacterDetailsModalProps> = ({
 
   return (
     <ModalOverlay onClick={onClose}>
-      <ModalContentContainer onClick={(e) => e.stopPropagation()}>
-        <ModalContent1 onClick={(e) => e.stopPropagation()}>
+      <ModalContentContainer
+        onClick={(e: React.MouseEvent<HTMLDivElement>) => e.stopPropagation()}
+      >
+        <ModalContent1
+          onClick={(e: React.MouseEvent<HTMLDivElement>) => e.stopPropagation()}
+        >
           <h2 className="Name">{character.name}</h2>
           <img
             className="Thumbnail"
@@ -31,7 +45,9 @@ const CharacterDetailsModal: React.FC<CharacterDetailsModalProps> = ({
           />
         </ModalContent1>
 
-        <ModalContent2 onClick={(e) => e.stopPropagation()}>
+        <ModalContent2
+          onClick={(e: React.MouseEvent<HTMLDivElement>) => e.stopPropagation()}
+        >
           <p className="Description">
             {character.description || "No description available."}
           </p>
@@ -40,7 +56,7 @@ const CharacterDetailsModal: React.FC<CharacterDetailsModalProps> = ({
 
           {creators.length > 0 ? (
             <ul className="Creators">
-              {creators.map((creator: any, index: number) => (
+              {creators.map((creator: Creator, index: number) => (
                 <li key={index}>{creator.name}</li>
               ))}
             </ul>
@@ -48,12 +64,14 @@ const CharacterDetailsModal: React.FC<CharacterDetailsModalProps> = ({
             <p>No creators information available.</p>
           )}
         </ModalContent2>
-        <ModalContent3 onClick={(e) => e.stopPropagation()}>
+        <ModalContent3
+          onClick={(e: React.MouseEvent<HTMLDivElement>) => e.stopPropagation()}
+        >
           <h3>Comics:</h3>
 
           {comics.length > 0 ? (
             <div className="Comics">
-              {comics.map((comic: any, index: number) => (
+              {comics.map((comic: Comic, index: number) => (
                 <li key={index}>{comic.name}</li>
               ))}
             </div>

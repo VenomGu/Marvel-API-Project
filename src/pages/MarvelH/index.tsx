@@ -6,7 +6,6 @@ import {
   HeaderWrapper,
   LoginContainer,
 } from "../Characters/styles";
-import { FaSearch } from "react-icons/fa";
 import LoginPage from "../Login";
 
 interface HeaderProps {
@@ -42,7 +41,7 @@ const Header: React.FC<HeaderProps> = ({ onSearch }) => {
         <header>
           <Title>
             <span onClick={homeButton}>
-              <img src="marvel-logo.png" alt="marvel-logo"></img>
+              <img src="../../assets/marvel-logo.png" alt="marvel-logo"></img>
             </span>
           </Title>
         </header>
@@ -63,9 +62,10 @@ const Header: React.FC<HeaderProps> = ({ onSearch }) => {
               onChange={handleInputChange}
               onKeyDown={handleSearchEnterPress}
             />
-            <button style={{ width: 30, height: 35 }} onClick={handleSearch}>
-              <FaSearch size={14} />
-            </button>
+            <button
+              style={{ width: 30, height: 35 }}
+              onClick={handleSearch}
+            ></button>
           </nav>
         </ButtonSearch>
       </HeaderWrapper>

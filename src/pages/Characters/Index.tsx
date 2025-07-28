@@ -11,7 +11,6 @@ import {
   BoxOfStars,
 } from "./styles";
 import Header from "../../pages/MarvelH/index";
-import { FiChevronDown } from "react-icons/fi";
 import CharacterDetailsModal from "../CharacterDetailsModal";
 
 interface ResponseData {
@@ -42,38 +41,30 @@ const Characters: React.FC = () => {
     localStorage.setItem("favoriteCharacters", JSON.stringify(characters));
   }, [characters]);
 
-  const handleSearch = useCallback(
-    async (query: string) => {
-      try {
-        const response = await api.get(
-          "http://gateway.marvel.com/v1/public/characters",
-          {
-            params: {
-              nameStartsWith: query,
-            },
-          }
-        );
-        const data = response.data.data.results.map((char: ResponseData) => ({
-          ...char,
-          isFavorite: false,
-          favoriteRank: 0,
-        }));
-        if (response.data.data.results.length === 0) {
-          alert("Character not found");
-        }
-        setCharacters(data);
-      } catch (error) {
-        console.log("Character not found", error);
+  const handleSearch = useCallback(async (query: string) => {
+    try {
+      const response = await api.get(`/characters`, {
+        params: {
+          nameStartsWith: query,
+        },
+      });
+      const data = response.data.data.results.map((char: ResponseData) => ({
+        ...char,
+        isFavorite: false,
+        favoriteRank: 0,
+      }));
+      if (response.data.data.results.length === 0) {
+        alert("Character not found");
       }
-    },
-    [characters]
-  );
+      setCharacters(data);
+    } catch (error) {
+      console.log("Character not found", error);
+    }
+  }, []);
 
   const handleCardClick = async (characterId: string) => {
     try {
-      const response = await api.get(
-        `http://gateway.marvel.com/v1/public/characters/${characterId}`
-      );
+      const response = await api.get(`/characters/${characterId}`);
       const character = response.data.data.results[0];
       setSelectedCharacter({
         ...character,
@@ -88,14 +79,11 @@ const Characters: React.FC = () => {
   const moreChars = useCallback(async () => {
     try {
       const offset = characters.length;
-      const response = await api.get(
-        "http://gateway.marvel.com/v1/public/characters",
-        {
-          params: {
-            offset,
-          },
-        }
-      );
+      const response = await api.get(`/characters`, {
+        params: {
+          offset,
+        },
+      });
       const moreCharacters = response.data.data.results.map(
         (char: ResponseData) => ({
           ...char,
@@ -137,11 +125,13 @@ const Characters: React.FC = () => {
         b.favoriteRank - a.favoriteRank ||
         Number(b.isFavorite) - Number(a.isFavorite)
     );
-
+  // Fetch characters from API on component mount on first render
   useEffect(() => {
+    console.log("Fetching characters from API");
     api
-      .get(`http://gateway.marvel.com/v1/public/characters`)
+      .get(`/characters`)
       .then((response) => {
+        console.log("Characters fetched successfully", response.data);
         setCharacters(
           response.data.data.results.map((char: ResponseData) => ({
             ...char,
@@ -150,7 +140,7 @@ const Characters: React.FC = () => {
           }))
         );
       })
-      .catch((error) => console.log("Not Working: ", error));
+      .catch((error) => console.log("Not Working: ", error, error.message));
   }, []);
 
   // Save favorites
@@ -254,11 +244,7 @@ const Characters: React.FC = () => {
           ))}
         </CardList>
 
-        <ButtonMore onClick={moreChars}>
-          <FiChevronDown size={20} />
-          Load More
-          <FiChevronDown size={20} />
-        </ButtonMore>
+        <ButtonMore onClick={moreChars}>Load More</ButtonMore>
 
         {selectedCharacter && (
           <CharacterDetailsModal
